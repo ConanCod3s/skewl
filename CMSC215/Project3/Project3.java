@@ -17,9 +17,9 @@ public class Project3 {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        GridBagConstraints gridContraints = new GridBagConstraints();
+        gridContraints.insets = new Insets(5, 5, 5, 5);
+        gridContraints.fill = GridBagConstraints.HORIZONTAL;
 
         // Input Fields and Labels
         JTextField distanceField = new JTextField(10);
@@ -42,72 +42,72 @@ public class Project3 {
         JButton calculateButton = new JButton("Calculate");
 
         // Distance
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        panel.add(new JLabel("Distance:"), gbc);
-        gbc.gridx = 1;
-        panel.add(distanceField, gbc);
-        gbc.gridx = 2;
-        panel.add(distanceUnit, gbc);
+        gridContraints.gridx = 0;
+        gridContraints.gridy = 0;
+        panel.add(new JLabel("Distance:"), gridContraints);
+        gridContraints.gridx = 1;
+        panel.add(distanceField, gridContraints);
+        gridContraints.gridx = 2;
+        panel.add(distanceUnit, gridContraints);
 
         // Gasoline Cost
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        panel.add(new JLabel("Gasoline Cost:"), gbc);
-        gbc.gridx = 1;
-        panel.add(gasCostField, gbc);
-        gbc.gridx = 2;
-        panel.add(gasCostUnit, gbc);
+        gridContraints.gridx = 0;
+        gridContraints.gridy = 1;
+        panel.add(new JLabel("Gasoline Cost:"), gridContraints);
+        gridContraints.gridx = 1;
+        panel.add(gasCostField, gridContraints);
+        gridContraints.gridx = 2;
+        panel.add(gasCostUnit, gridContraints);
 
         // Gas Mileage
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        panel.add(new JLabel("Gas Mileage:"), gbc);
-        gbc.gridx = 1;
-        panel.add(mileageField, gbc);
-        gbc.gridx = 2;
-        panel.add(mileageUnit, gbc);
+        gridContraints.gridx = 0;
+        gridContraints.gridy = 2;
+        panel.add(new JLabel("Gas Mileage:"), gridContraints);
+        gridContraints.gridx = 1;
+        panel.add(mileageField, gridContraints);
+        gridContraints.gridx = 2;
+        panel.add(mileageUnit, gridContraints);
 
         // Number of Days
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        panel.add(new JLabel("Number Of Days:"), gbc);
-        gbc.gridx = 1;
-        panel.add(daysField, gbc);
+        gridContraints.gridx = 0;
+        gridContraints.gridy = 3;
+        panel.add(new JLabel("Number Of Days:"), gridContraints);
+        gridContraints.gridx = 1;
+        panel.add(daysField, gridContraints);
 
         // Hotel Cost
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        panel.add(new JLabel("Hotel Cost:"), gbc);
-        gbc.gridx = 1;
-        panel.add(hotelCostField, gbc);
+        gridContraints.gridx = 0;
+        gridContraints.gridy = 4;
+        panel.add(new JLabel("Hotel Cost:"), gridContraints);
+        gridContraints.gridx = 1;
+        panel.add(hotelCostField, gridContraints);
 
         // Food Cost
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        panel.add(new JLabel("Food Cost:"), gbc);
-        gbc.gridx = 1;
-        panel.add(foodCostField, gbc);
+        gridContraints.gridx = 0;
+        gridContraints.gridy = 5;
+        panel.add(new JLabel("Food Cost:"), gridContraints);
+        gridContraints.gridx = 1;
+        panel.add(foodCostField, gridContraints);
 
         // Attraction Cost
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        panel.add(new JLabel("Attractions:"), gbc);
-        gbc.gridx = 1;
-        panel.add(attractionCostField, gbc);
+        gridContraints.gridx = 0;
+        gridContraints.gridy = 6;
+        panel.add(new JLabel("Attractions:"), gridContraints);
+        gridContraints.gridx = 1;
+        panel.add(attractionCostField, gridContraints);
 
         // Total Trip Cost
-        gbc.gridx = 0;
-        gbc.gridy = 7;
-        panel.add(new JLabel("Total Trip Cost:"), gbc);
-        gbc.gridx = 1;
-        panel.add(resultField, gbc);
+        gridContraints.gridx = 0;
+        gridContraints.gridy = 7;
+        panel.add(new JLabel("Total Trip Cost:"), gridContraints);
+        gridContraints.gridx = 1;
+        panel.add(resultField, gridContraints);
 
         // Calculate Button
-        gbc.gridx = 1;
-        gbc.gridy = 8;
-        gbc.gridwidth = 2;
-        panel.add(calculateButton, gbc);
+        gridContraints.gridx = 1;
+        gridContraints.gridy = 8;
+        gridContraints.gridwidth = 2;
+        panel.add(calculateButton, gridContraints);
 
         // Update ComboBox options based on distance unit selection
         distanceUnit.addItemListener(new ItemListener() {
@@ -126,7 +126,6 @@ public class Project3 {
             }
         });
 
-        // Calculate Button ActionListener
         calculateButton.addActionListener(new CalculateHandler(
                 distanceField, distanceUnit, gasCostField, gasCostUnit,
                 mileageField, mileageUnit, hotelCostField, foodCostField,
@@ -186,7 +185,10 @@ public class Project3 {
                 resultField.setText("$" + formatter.format(tripCost.calculateCost()));
 
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Please enter valid numerical values for all fields.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                        "Please enter valid numerical values for all fields.",
+                        "Input Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }
