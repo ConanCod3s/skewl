@@ -13,15 +13,16 @@ public class Project3 {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Trip Cost Estimator");
         JPanel panel = new JPanel(new GridBagLayout());
+        JPanel buttonPanel = new JPanel();
+
+        frame.setLayout(new BorderLayout());
         frame.setSize(450, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(panel);
 
         GridBagConstraints gridContraints = new GridBagConstraints();
         gridContraints.insets = new Insets(5, 5, 5, 5);
         gridContraints.fill = GridBagConstraints.HORIZONTAL;
 
-        // Input Fields and Labels
         JTextField distanceField = new JTextField(10);
         JComboBox<String> distanceUnit = new JComboBox<>(new String[]{"Miles", "Kilometers"});
 
@@ -39,6 +40,7 @@ public class Project3 {
         JTextField resultField = new JTextField(10);
         resultField.setEditable(false);
 
+        JButton exitButton = new JButton("Exit");
         JButton calculateButton = new JButton("Calculate");
 
         // Distance
@@ -103,13 +105,16 @@ public class Project3 {
         gridContraints.gridx = 1;
         panel.add(resultField, gridContraints);
 
-        // Calculate Button
-        gridContraints.gridx = 1;
-        gridContraints.gridy = 8;
-        gridContraints.gridwidth = 2;
-        panel.add(calculateButton, gridContraints);
+        buttonPanel.add(calculateButton);
+        buttonPanel.add(exitButton);
 
-        // Update ComboBox options based on distance unit selection
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
         distanceUnit.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -131,6 +136,9 @@ public class Project3 {
                 mileageField, mileageUnit, hotelCostField, foodCostField,
                 attractionCostField, daysField, resultField
         ));
+
+        frame.add(panel, BorderLayout.CENTER);
+        frame.add(buttonPanel, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
@@ -169,13 +177,13 @@ public class Project3 {
                 int attractionCost = Integer.parseInt(attractionCostField.getText());
 
                 if (distanceUnit.getSelectedItem().equals("Kilometers")) {
-                    distance = distance * 0.621371;
+                    distance = distance * 0.62;
                 }
                 if (gasCostUnit.getSelectedItem().equals("Dollars/Liter")) {
-                    gasCost = gasCost * 3.78541;
+                    gasCost = gasCost * 3.78;
                 }
                 if (mileageUnit.getSelectedItem().equals("Kilometers/Liter")) {
-                    mileage = (int) (mileage * 2.35215);
+                    mileage = (int) (mileage * 2.35);
                 }
 
                 TripCost tripCost = new TripCost(distance, gasCost, mileage, days, hotelCost, foodCost, attractionCost);
@@ -186,7 +194,7 @@ public class Project3 {
 
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null,
-                        "Please enter valid numerical values for all fields.",
+                        "Please enter valid number for all fields.",
                         "Input Error",
                         JOptionPane.ERROR_MESSAGE);
             }
