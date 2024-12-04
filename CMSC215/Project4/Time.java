@@ -1,4 +1,4 @@
-package project4;
+package Project4;
 
 public class Time implements Comparable<Time> {
     private final int hours;
