@@ -1,0 +1,40 @@
+# Not being sure what I'll be doing in courses
+# I'm preemptively adding a bunch of ignores
+
+# Ignore IDE/editor settings
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore Java build files
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignore Maven build directory
+target/
+*.log
+mvn-*.*
+dependency-reduced-pom.xml
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+
+# Ignore build tools output
+.gradle/
+build/
+*.gradle
+
+# Ignore sensitive files
+.env

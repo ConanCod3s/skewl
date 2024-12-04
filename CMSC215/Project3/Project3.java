@@ -16,7 +16,7 @@ public class Project3 {
         JPanel buttonPanel = new JPanel();
 
         frame.setLayout(new BorderLayout());
-        frame.setSize(450, 400);+
+        frame.setSize(450, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         GridBagConstraints gridContraints = new GridBagConstraints();
