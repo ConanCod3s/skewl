@@ -5,8 +5,8 @@ import java.util.*;
  *      This error is caused by a missing ) on line 12
  *  Expected cmd line print out:
  *      Delimiter error:
- *          opened ( at Line 14, Col 25
- *          expected ) but found } at Line 16, Col 5
+ *          opened ( at Line 16, Col 25
+ *          expected ) but found } at Line 18, Col 5
  */
 
 public class TestOne {

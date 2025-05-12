@@ -6,9 +6,9 @@ import java.util.*;
  *      causing all following code to be commented out.
  *
  *  Expected cmd line print out:
- *      Unclosed { (opened at Line 15, Col 44)
- *  Even though thats not the issue the DelimiterChecker doesnt find a closing {
- *  since it is commented out
+ *      Delimiter error:
+ *          opened { at Line 15, Col 44 but reached end-of-file without closing
+ *  Even though thats not the issue the DelimiterChecker doesnt find a closing { since it is commented out
  */
 
 public class TestOne {
